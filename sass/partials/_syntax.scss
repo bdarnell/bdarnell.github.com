@@ -89,6 +89,7 @@ h3.filename {
   + pre { @include border-top-radius(0px); }
 }
 
+/* This does weird things to code blocks in lists (but not outside) -BGD
 p, li {
   code {
     @extend .mono;
@@ -104,7 +105,7 @@ p, li {
     margin: -1px 0;
   }
   pre code { font-size: 1em !important; background: none; border: none; }
-}
+}*/
 
 .pre-code {
   @include selection(adjust-color($base03, $lightness: 23%, $saturation: -65%), $text-shadow: $base03 0 1px);
