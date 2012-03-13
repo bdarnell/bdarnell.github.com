@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Ben's Development Blog]]></title>
-  <link href="http://bdarnell.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Python | Ben's Development Blog]]></title>
+  <link href="http://bdarnell.github.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://bdarnell.github.com/"/>
   <updated>2012-03-13T00:16:57-07:00</updated>
   <id>http://bdarnell.github.com/</id>
@@ -19,11 +19,11 @@
     <updated>2012-03-13T09:00:00-07:00</updated>
     <id>http://bdarnell.github.com/blog/2012/03/13/cross-python-development-with-auto2to3</id>
     <content type="html"><![CDATA[<p><code>2to3</code> can be a useful tool for developing Python libraries that work
-with both Python 2 and 3, but it&#8217;s fallen out of fashion because it
+with both Python 2 and 3, but it's fallen out of fashion because it
 intrudes into the development process in awkward ways and generally
 slows things down.  In spite of its weaknesses, I believe <code>2to3</code> is
 a good approach for many libraries to support multiple versions of
-Python, so in this post I&#8217;ll share the approach and tools I used
+Python, so in this post I'll share the approach and tools I used
 to add Python 3 support to <a href="http://www.tornadoweb.org">Tornado</a></p>
 
 <h2><code>2to3</code> vs single-source</h2>
@@ -31,10 +31,10 @@ to add Python 3 support to <a href="http://www.tornadoweb.org">Tornado</a></p>
 <p>The major alternative to <code>2to3</code> is to use a single source tree written
 to the common subset of all supported versions of Python.  This is a
 viable approach even for large projects, as shown by e.g.
-<a href="https://groups.google.com/forum/#!topic/django-developers/XjrX3FIPT-U">Vinay Sajip&#8217;s work with Django</a>.  However, the resulting code
+<a href="https://groups.google.com/forum/#!topic/django-developers/XjrX3FIPT-U">Vinay Sajip's work with Django</a>.  However, the resulting code
 requires many <a href="https://code.djangoproject.com/wiki/PortingNotesFor2To3">compatibility shims</a>, and looks
 somewhat unnatural from the perspective of both Python 2 and 3.  This
-is especially true if compatibility with Python 2.5 is desired &#8211; many
+is especially true if compatibility with Python 2.5 is desired -- many
 features that ease the transition to Python 3 were introduced in
 version 2.6.  Personally, I prefer the workflow afforded by <code>2to3</code>, in
 which the source code remains more-or-less normal Python 2, but it
@@ -45,26 +45,26 @@ works on Python 3 as well.</p>
 
 <h2>Getting started</h2>
 
-<p>You&#8217;ll need a good unit/regression test suite to ensure that things are
+<p>You'll need a good unit/regression test suite to ensure that things are
 working as expected in Python 3.  In addition, your package should be
 installable with a standard <code>setup.py</code> command.  Finally, of course,
 check your third-party dependencies to ensure they are compatible with
 Python 3.</p>
 
-<p>You&#8217;ll need the following tools:</p>
+<p>You'll need the following tools:</p>
 
 <ul>
 <li>At least one build of Python 3.  Since the early versions of Python 3
-saw relatively little adoption, it&#8217;s generally safe to skip 3.0 and 3.1
+saw relatively little adoption, it's generally safe to skip 3.0 and 3.1
 and go straight to 3.2.  On Ubuntu you can install multiple Python packages
 from the <a href="https://launchpad.net/~fkrull/+archive/deadsnakes">deadsnakes ppa</a>; on a Mac try Homebrew or Macports.</li>
 <li><code>2to3</code>: Included in recent versions of Python (as far back as 2.6,
-although we&#8217;ll be using the version in 3.2)</li>
+although we'll be using the version in 3.2)</li>
 <li><code>virtualenv</code> and <code>pip</code>:  The de facto standards for managing multiple
 Python environments.</li>
 <li><code>distribute</code>: The Python 3 successor of <code>setuptools</code>, necessary for
 running <code>2to3</code> automatically at install time.  <code>virtualenv</code> will
-install this automatically, so there&#8217;s no need to download it separately.</li>
+install this automatically, so there's no need to download it separately.</li>
 <li><a href="http://tox.readthedocs.org/en/latest/index.html">tox</a>: A virtualenv manager and test runner.</li>
 <li><a href="https://github.com/bdarnell/auto2to3">auto2to3</a>: My own contribution to the Python 3 toolchain, <code>auto2to3</code>
 makes it easier and faster to work with <code>2to3</code>.  Note that <code>auto2to3</code>
@@ -95,18 +95,18 @@ specify the program to run.</p>
 ~/envs/py32/bin/python -m auto2to3 -m tornado.test.runtests
 </code></pre>
 
-<p>At this point, if you&#8217;re lucky, you&#8217;ll see a long list of failures (if you&#8217;re
+<p>At this point, if you're lucky, you'll see a long list of failures (if you're
 unlucky, some failure happened early enough that it prevented the rest of the
-test suite from running).  Errors you&#8217;re likely to encounter include:</p>
+test suite from running).  Errors you're likely to encounter include:</p>
 
 <ul>
-<li><strong>Bytes and unicode don&#8217;t mix&#8230;</strong> The big change in Python 3 is that
+<li><strong>Bytes and unicode don't mix...</strong> The big change in Python 3 is that
 there is no longer an implicit conversion between byte strings and
 unicode strings.  Attempts to use one when the other is expected will
 usually result in <code>TypeErrors</code>.  Bugs of this type are often (but
 not necessarily) bugs in Python 2 as well, but would only manifest when
 non-ascii characters are used.</li>
-<li><p><strong>&#8230;Except when they do.</strong>  There&#8217;s an implicit conversion between bytes
+<li><p><strong>...Except when they do.</strong>  There's an implicit conversion between bytes
 and <code>str</code>, because <code>str()</code> can convert any type to string.  This is
 an indirect conversion via <code>repr()</code>, and is unlikely to be what you want:</p>
 
@@ -131,7 +131,7 @@ changes to the Tornado master branch.</p>
 
 <h2>Wrapping it up</h2>
 
-<p>Once your tests are passing with <code>2to3</code>, it&#8217;s time to prepare the package for
+<p>Once your tests are passing with <code>2to3</code>, it's time to prepare the package for
 distribution.  In <code>setup.py</code>, do something like this:</p>
 
 <pre><code>import sys
@@ -150,10 +150,10 @@ distutils.core.setup(
 <p>This will run <code>2to3</code> automatically at installation time, so everything should
 just work for people installing your package under Python 3.</p>
 
-<p>Once the initial port to Python 3 is done, it&#8217;s often more convenient
+<p>Once the initial port to Python 3 is done, it's often more convenient
 to treat Python 3 just like any other Python version.  This can be
-done by running tests under <code>tox</code> before each commit.  It&#8217;s slower
-than <code>auto2to3</code> since it doesn&#8217;t cache the converted output, but it&#8217;s
+done by running tests under <code>tox</code> before each commit.  It's slower
+than <code>auto2to3</code> since it doesn't cache the converted output, but it's
 a more realistic simulation of real-world installations.  Create a
 file <code>tox.ini</code> (in the same directory as <code>setup.py</code>) that looks
 something like this:</p>
@@ -175,22 +175,22 @@ changedir = {toxworkdir}
 <p>Now run <code>~/envs/py27/bin/tox</code> and it will run your tests under both Python
 2.7 and 3.2.</p>
 
-<p>Once you&#8217;ve tested everything enough to be confident in a new release,
+<p>Once you've tested everything enough to be confident in a new release,
 just upload a new build to PyPI and it will be installable via
 <code>pip</code> in both 2 and 3.</p>
 
 <h2>The future</h2>
 
-<p>Once the initial work of porting is done, I&#8217;ve found it to be fairly
+<p>Once the initial work of porting is done, I've found it to be fairly
 simple to maintain compatibility as development continues - I work
 mainly in Python 2.7, and test the other versions via <code>tox</code>.  The most
 common error that is caught in my Python 3 test runs is forgetting to
 mark the ascii string literals I use in unit tests as byte strings,
 which is easily remedied.</p>
 
-<p><code>2to3</code> is of course a transitional tool, and at some point you&#8217;ll want to
+<p><code>2to3</code> is of course a transitional tool, and at some point you'll want to
 switch to working mainly in Python 3.  It should be possible to adapt
-this workflow to go in the other direction with <code>3to2</code>, but I haven&#8217;t
+this workflow to go in the other direction with <code>3to2</code>, but I haven't
 pursued this approach yet mainly due to the lack of standardized support
 for running <code>3to2</code> automatically in <code>setuptools</code>/<code>distribute</code>.</p>
 ]]></content>

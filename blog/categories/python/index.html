@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ben's Development Blog</title>
+  <title>Category: Python - Ben's Development Blog</title>
   <meta name="author" content="Ben Darnell">
 
   
-  <meta name="description" content="2to3 can be a useful tool for developing Python libraries that work
-with both Python 2 and 3, but it&#8217;s fallen out of fashion because it &hellip;">
+  <meta name="description" content="Category: Python">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ with both Python 2 and 3, but it&#8217;s fallen out of fashion because it &helli
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bdarnell.github.com">
+  <link rel="canonical" href="http://bdarnell.github.comblog/categories/python">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,76 +60,40 @@ with both Python 2 and 3, but it&#8217;s fallen out of fashion because it &helli
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/13/cross-python-development-with-auto2to3/">Cross-Python development with auto2to3</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-13T09:00:00-07:00" pubdate data-updated="true">Mar 13<span>th</span>, 2012</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Python</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-  <div class="entry-content"><p><code>2to3</code> can be a useful tool for developing Python libraries that work
-with both Python 2 and 3, but it&#8217;s fallen out of fashion because it
-intrudes into the development process in awkward ways and generally
-slows things down.  In spite of its weaknesses, I believe <code>2to3</code> is
-a good approach for many libraries to support multiple versions of
-Python, so in this post I&#8217;ll share the approach and tools I used
-to add Python 3 support to <a href="http://www.tornadoweb.org">Tornado</a></p>
 
-<h2><code>2to3</code> vs single-source</h2>
+  
+  <h2>2012</h2>
 
-<p>The major alternative to <code>2to3</code> is to use a single source tree written
-to the common subset of all supported versions of Python.  This is a
-viable approach even for large projects, as shown by e.g.
-<a href="https://groups.google.com/forum/#!topic/django-developers/XjrX3FIPT-U">Vinay Sajip&#8217;s work with Django</a>.  However, the resulting code
-requires many <a href="https://code.djangoproject.com/wiki/PortingNotesFor2To3">compatibility shims</a>, and looks
-somewhat unnatural from the perspective of both Python 2 and 3.  This
-is especially true if compatibility with Python 2.5 is desired &#8211; many
-features that ease the transition to Python 3 were introduced in
-version 2.6.  Personally, I prefer the workflow afforded by <code>2to3</code>, in
-which the source code remains more-or-less normal Python 2, but it
-works on Python 3 as well.</p>
+<article>
+  
+<h1><a href="/blog/2012/03/13/cross-python-development-with-auto2to3/">Cross-Python development with auto2to3</a></h1>
+<time datetime="2012-03-13T09:00:00-07:00" pubdate><span class='month'>Mar</span> <span class='day'>13</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>Python</a></span>
+</footer>
+
+
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/03/13/cross-python-development-with-auto2to3/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+</article>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -151,6 +114,7 @@ works on Python 3 as well.</p>
 
   
 </aside>
+
 
     </div>
   </div>
