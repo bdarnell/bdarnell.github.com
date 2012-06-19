@@ -9,8 +9,9 @@
   <meta name="author" content="Ben Darnell">
 
   
-  <meta name="description" content="2to3 can be a useful tool for developing Python libraries that work
-with both Python 2 and 3, but it&#8217;s fallen out of fashion because it &hellip;">
+  <meta name="description" content="Protocol Buffers and Thrift are good formats for data
+serialization, but they are less popular in dynamic languages like
+Python than schemaless &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +64,58 @@ with both Python 2 and 3, but it&#8217;s fallen out of fashion because it &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/18/announcing-codegenloader-for-python/">Announcing CodeGenLoader for Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-18T23:40:00-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://code.google.com/p/protobuf/">Protocol Buffers</a> and <a href="http://thrift.apache.org">Thrift</a> are good formats for data
+serialization, but they are less popular in dynamic languages like
+Python than schemaless alternatives like JSON because of the need to
+run a code generator on the schema file to create the necessary
+classes.  <a href="https://github.com/bdarnell/codegenloader">CodeGenLoader</a> is a Python import hook that
+automatically and transparently runs the necessary code generator at
+import time.  It includes support for both Thrift and Protocol Buffers,
+with an extensible base class that can be used to add more code generators.</p>
+
+<p>All you need is two lines of magic in an <code>__init__.py</code>:</p>
+
+<pre><code>import codegenloader.protobuf
+__path__ = codegenloader.protobuf.make_path(__name__, ".")
+</code></pre>
+
+<p>Get it with <code>pip install codegenloader</code> or check out the source
+<a href="https://github.com/bdarnell/codegenloader">on github</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -136,6 +189,10 @@ works on Python 3 as well.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/06/18/announcing-codegenloader-for-python/">Announcing CodeGenLoader for Python</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/03/13/cross-python-development-with-auto2to3/">Cross-Python development with auto2to3</a>

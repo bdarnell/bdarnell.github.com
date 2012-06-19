@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Python - Ben's Development Blog</title>
+  <title>Announcing CodeGenLoader for Python - Ben's Development Blog</title>
   <meta name="author" content="Ben Darnell">
 
   
-  <meta name="description" content="Category: Python">
+  <meta name="description" content="Protocol Buffers and Thrift are good formats for data
+serialization, but they are less popular in dynamic languages like
+Python than schemaless &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bdarnell.github.comblog/categories/python">
+  <link rel="canonical" href="http://bdarnell.github.com/blog/2012/06/18/announcing-codegenloader-for-python">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,35 +63,94 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Python</h1>
+    
+      <h1 class="entry-title">Announcing CodeGenLoader for Python</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-18T23:40:00-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p><a href="http://code.google.com/p/protobuf/">Protocol Buffers</a> and <a href="http://thrift.apache.org">Thrift</a> are good formats for data
+serialization, but they are less popular in dynamic languages like
+Python than schemaless alternatives like JSON because of the need to
+run a code generator on the schema file to create the necessary
+classes.  <a href="https://github.com/bdarnell/codegenloader">CodeGenLoader</a> is a Python import hook that
+automatically and transparently runs the necessary code generator at
+import time.  It includes support for both Thrift and Protocol Buffers,
+with an extensible base class that can be used to add more code generators.</p>
 
-  
-  <h2>2012</h2>
+<p>All you need is two lines of magic in an <code>__init__.py</code>:</p>
 
-<article>
-  
-<h1><a href="/blog/2012/03/13/cross-python-development-with-auto2to3/">Cross-Python development with auto2to3</a></h1>
-<time datetime="2012-03-13T09:00:00-07:00" pubdate><span class='month'>Mar</span> <span class='day'>13</span> <span class='year'>2012</span></time>
+<pre><code>import codegenloader.protobuf
+__path__ = codegenloader.protobuf.make_path(__name__, ".")
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>Python</a></span>
-</footer>
-
-
-</article>
-
+<p>Get it with <code>pip install codegenloader</code> or check out the source
+<a href="https://github.com/bdarnell/codegenloader">on github</a>.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Ben Darnell</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-18T23:40:00-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bdarnell.github.com/blog/2012/06/18/announcing-codegenloader-for-python/" data-via="" data-counturl="http://bdarnell.github.com/blog/2012/06/18/announcing-codegenloader-for-python/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/13/cross-python-development-with-auto2to3/" title="Previous Post: Cross-Python development with auto2to3">&laquo; Cross-Python development with auto2to3</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

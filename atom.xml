@@ -4,7 +4,7 @@
   <title><![CDATA[Ben's Development Blog]]></title>
   <link href="http://bdarnell.github.com/atom.xml" rel="self"/>
   <link href="http://bdarnell.github.com/"/>
-  <updated>2012-03-13T10:10:58-07:00</updated>
+  <updated>2012-06-19T00:32:55-07:00</updated>
   <id>http://bdarnell.github.com/</id>
   <author>
     <name><![CDATA[Ben Darnell]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Announcing CodeGenLoader for Python]]></title>
+    <link href="http://bdarnell.github.com/blog/2012/06/18/announcing-codegenloader-for-python/"/>
+    <updated>2012-06-18T23:40:00-07:00</updated>
+    <id>http://bdarnell.github.com/blog/2012/06/18/announcing-codegenloader-for-python</id>
+    <content type="html"><![CDATA[<p><a href="http://code.google.com/p/protobuf/">Protocol Buffers</a> and <a href="http://thrift.apache.org">Thrift</a> are good formats for data
+serialization, but they are less popular in dynamic languages like
+Python than schemaless alternatives like JSON because of the need to
+run a code generator on the schema file to create the necessary
+classes.  <a href="https://github.com/bdarnell/codegenloader">CodeGenLoader</a> is a Python import hook that
+automatically and transparently runs the necessary code generator at
+import time.  It includes support for both Thrift and Protocol Buffers,
+with an extensible base class that can be used to add more code generators.</p>
+
+<p>All you need is two lines of magic in an <code>__init__.py</code>:</p>
+
+<pre><code>import codegenloader.protobuf
+__path__ = codegenloader.protobuf.make_path(__name__, ".")
+</code></pre>
+
+<p>Get it with <code>pip install codegenloader</code> or check out the source
+<a href="https://github.com/bdarnell/codegenloader">on github</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cross-Python development with auto2to3]]></title>
